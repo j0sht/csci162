@@ -1,31 +1,40 @@
-﻿main, Input
+﻿/ This program stores a secret number and repeatedly asks the user
+/  to guess the number.
+/ If the user guesses too high, the program informs the user that the
+/  secret number is lower by displaying an 'L'.
+/ If the user guesses too low, the program informs the user that the
+/  secret number is higher by displaying an 'H'.
+/ If the user guesses correctly, the program displays the secret number
+/  and double's the number twice, displaying the value each time it is
+/  doubled.
+main, Input
     Store guess
 	Subt secret
     Store result
 	Skipcond 400 / AC == 0 (correct guess - go to line 7)
-	Jump highOrLow / AC != 0 (incorrect guess)
+	Jump displayHighOrLow / AC != 0 (incorrect guess)
 	JnS displayDoubles
 	Halt
 
-highOrLow, Load result
-	Skipcond 800 / AC > 0 (guess is too high)
-    Jump secretIsHigher
-	Jump secretIsLower
+displayHighOrLow, Load result
+	Skipcond 800 / AC > 0 (guess is too high - go to line 13)
+    Jump displayHigherAndJumpToMain
+	Jump displayLowerAndJumpToMain
 
-secretIsHigher, Load h
+displayHigherAndJumpToMain, Load h
     Output
 	Jump main
-    
-secretIsLower, Load l
+
+displayLowerAndJumpToMain, Load l
 	Output
 	Jump main
-	
+
 double, HEX 0
 	Load double_input
 	Add double_input
 	Store double_output
 	JumpI double
-    
+
 displayDoubles, HEX 0
     Load secret
     Output
