@@ -9,49 +9,49 @@
 /  doubled.
 main, Input
     Store guess
-	Subt secret
+    Subt secret
     Store result
-	Skipcond 400 / AC == 0 (correct guess - go to line 16)
-	Jump displayHighOrLow / AC != 0 (incorrect guess)
-	JnS displayDoubles
-	Halt
+    Skipcond 400 / AC == 0 (correct guess - go to line 16)
+    Jump displayHighOrLow / AC != 0 (incorrect guess)
+    JnS displayDoubles
+    Halt
 
 displayHighOrLow, Load result
-	Skipcond 800 / AC > 0 (guess is too high - go to line 22)
+    Skipcond 800 / AC > 0 (guess is too high - go to line 22)
     Jump displayHigherAndJumpToMain
-	Jump displayLowerAndJumpToMain
+    Jump displayLowerAndJumpToMain
 
 displayHigherAndJumpToMain, Load h
     Output
-	Jump main
+    Jump main
 
 displayLowerAndJumpToMain, Load l
-	Output
-	Jump main
+    Output
+    Jump main
 
 double, HEX 0
-	Load double_input
-	Add double_input
-	Store double_output
-	JumpI double
+    Load double_input
+    Add double_input
+    Store double_output
+    JumpI double
 
 displayDoubles, HEX 0
     Load secret
     Output
     Store double_input
-	JnS double
+    JnS double
     Load double_output
     Output
-	Store double_input
-	JnS double
+    Store double_input
+    JnS double
     Load double_output
-	Output
-	JumpI displayDoubles
+    Output
+    JumpI displayDoubles
 
 / Variables
 secret, HEX D
 guess, DEC 0
-result, HEX 0
+result, DEC 0
 h, DEC 72
 l, DEC 76
 double_input, DEC 0
