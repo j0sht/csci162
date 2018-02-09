@@ -7,18 +7,15 @@
 / If the user guesses correctly, the program displays the secret number
 /  and double's the number twice, displaying the value each time it is
 /  doubled.
-main, Input
-    Store guess
+main, Input / get input in decimal format
     Subt secret
-    Store result
-    Skipcond 400 / AC == 0 (correct guess - go to line 16)
+    Skipcond 400 / AC == 0 (correct guess - go to line 14)
     Jump displayHighOrLow / AC != 0 (incorrect guess)
     JnS displayDoubles
     Halt
 
-displayHighOrLow, Load result
-    Skipcond 800 / AC > 0 (guess is too high - go to line 22)
-    Jump displayHigherAndJumpToMain
+displayHighOrLow, Skipcond 800 / AC > 0 (guess is too high - go to line 19)
+    Jump displayHigherAndJumpToMain / AC < 0 (guess is too low)
     Jump displayLowerAndJumpToMain
 
 displayHigherAndJumpToMain, Load h
@@ -50,8 +47,6 @@ displayDoubles, HEX 0
 
 / Variables
 secret, HEX D
-guess, DEC 0
-result, DEC 0
 h, DEC 72
 l, DEC 76
 double_input, DEC 0
