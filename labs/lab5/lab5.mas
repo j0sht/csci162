@@ -1,13 +1,34 @@
-﻿guessProgram, Input / get user's guess
+﻿main, Input
     Store guess
-    Load guess
-	Subt secret / subtract guess by secret
+	Subt secret
     Store result
-    Load result
-	Skipcond 400 / AC == 0 (correct guess - go to l9)
-	JnS highOrLow / AC != 0 (incorrect guess)
+	Skipcond 400 / AC == 0 (correct guess - go to line 7)
+	Jump highOrLow / AC != 0 (incorrect guess)
+	JnS displayDoubles
+	Halt
+
+highOrLow, Load result
+	Skipcond 800 / AC > 0 (guess is too high)
+    Jump secretIsHigher
+	Jump secretIsLower
+
+secretIsHigher, Load h
+    Output
+	Jump main
+    
+secretIsLower, Load l
+	Output
+	Jump main
+	
+double, HEX 0
+	Load double_input
+	Add double_input
+	Store double_output
+	JumpI double
+    
+displayDoubles, HEX 0
     Load secret
-    Output / Output correct number
+    Output
     Store double_input
 	JnS double
     Load double_output
@@ -16,27 +37,7 @@
 	JnS double
     Load double_output
 	Output
-	Halt
-
-highOrLow, HEX 0 / user had incorrect guess
-	Load result
-	Skipcond 800 / AC > 0 (guess is too high)
-    JnS secretIsHigher
-	/ Secret is lower
-	Load l
-	Output
-	Jump guessProgram
-
-secretIsHigher, HEX 0
-	Load h
-    Output
-	Jump guessProgram
-	
-double, HEX 0
-	Load double_input
-	Add double_input
-	Store double_output
-	JumpI double
+	JumpI displayDoubles
 
 / Variables
 secret, HEX D
