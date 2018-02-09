@@ -11,13 +11,13 @@ main, Input
     Store guess
 	Subt secret
     Store result
-	Skipcond 400 / AC == 0 (correct guess - go to line 7)
+	Skipcond 400 / AC == 0 (correct guess - go to line 16)
 	Jump displayHighOrLow / AC != 0 (incorrect guess)
 	JnS displayDoubles
 	Halt
 
 displayHighOrLow, Load result
-	Skipcond 800 / AC > 0 (guess is too high - go to line 13)
+	Skipcond 800 / AC > 0 (guess is too high - go to line 22)
     Jump displayHigherAndJumpToMain
 	Jump displayLowerAndJumpToMain
 
