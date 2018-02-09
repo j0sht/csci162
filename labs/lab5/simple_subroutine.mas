@@ -1,0 +1,11 @@
+﻿/ Enter subroutine PrintVariableX
+JnS PrintVariableX
+Halt
+
+PrintVariableX, HEX 000 / Used for storing return address
+	Load X
+    Output
+	/ Exit subroutine PrintVariableX
+    JumpI PrintVariableX
+
+X, DEC 42

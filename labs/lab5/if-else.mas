@@ -1,0 +1,17 @@
+﻿/ From: https://gist.github.com/mathewmariani/91f471422c4ac0b5ee37
+if, Load exp / Load exp into AC
+	Skipcond 400 / Skipcond 400 (if AC == 0)
+    Jump else / Jump to 'else'
+    Load ivalue / Load ivalue into AC
+    Output / Output value ivalue
+	Jump end
+
+else, Load evalue / Load evalue into ac
+	Output / Output value evalue
+
+end, Halt
+
+/ Variables
+exp, DEC 0
+ivalue, DEC 2
+evalue, DEC 3
