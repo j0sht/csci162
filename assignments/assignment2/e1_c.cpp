@@ -15,7 +15,6 @@ int main() {
     clearNumber(answer);
     inputDecimal(num);
     inputDecimal(maxj);
-    clearNumber(maxj);
     while ((j-maxj) <= 0) {
 	answer += num;
 	num += one;
