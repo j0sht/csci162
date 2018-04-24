@@ -16,6 +16,6 @@ the front half will be the longer half. Use the predicates append
 and size. */
 halves(L, LF, LB):-
     size(L, SIZE),
-    X is SIZE - SIZE // 2,
+    X is SIZE - (SIZE // 2),
     size(LF, X),
     append(LF, LB, L), !.
